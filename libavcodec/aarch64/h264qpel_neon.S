@@ -22,6 +22,8 @@
 #include "libavutil/aarch64/asm.S"
 #include "neon.S"
 
+#define H264_SLOTHY_OPT 1
+
         /* H.264 qpel MC */
 
 .macro  lowpass_const   r
@@ -194,7 +196,9 @@ function \type\()_h264_qpel8_h_lowpass_neon
 endfunc
 .endm
 
+#ifndef H264_SLOTHY_OPT
         h264_qpel_h_lowpass put
+#endif
         h264_qpel_h_lowpass avg
 
 .macro  h264_qpel_h_lowpass_l2 type
@@ -321,7 +325,9 @@ function \type\()_h264_qpel8_v_lowpass_neon
 endfunc
 .endm
 
+#ifndef H264_SLOTHY_OPT
         h264_qpel_v_lowpass put
+#endif
         h264_qpel_v_lowpass avg
 
 .macro  h264_qpel_v_lowpass_l2 type
@@ -412,9 +418,12 @@ function \type\()_h264_qpel8_v_lowpass_l2_neon
 endfunc
 .endm
 
+#ifndef H264_SLOTHY_OPT
         h264_qpel_v_lowpass_l2 put
+#endif
         h264_qpel_v_lowpass_l2 avg
 
+#ifndef H264_SLOTHY_OPT
 function put_h264_qpel8_hv_lowpass_neon_top
         lowpass_const   w12
         ld1             {v16.8h}, [x1], x3
@@ -452,6 +461,7 @@ function put_h264_qpel8_hv_lowpass_neon_top
 
         ret
 endfunc
+#endif // H264_SLOTHY_OPT (put_h264_qpel8_hv_lowpass_neon_top)
 
 .macro  h264_qpel8_hv_lowpass type
 function \type\()_h264_qpel8_hv_lowpass_neon

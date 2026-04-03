@@ -22,6 +22,9 @@
 #include "libavutil/aarch64/asm.S"
 #include "neon.S"
 
+#define H264_SLOTHY_OPT 1
+
+#ifndef H264_SLOTHY_OPT
 function ff_h264_idct_add_neon, export=1
 .L_ff_h264_idct_add_neon:
         AARCH64_VALID_CALL_TARGET
@@ -77,6 +80,7 @@ function ff_h264_idct_add_neon, export=1
         sub             x1,  x1,  #32
         ret
 endfunc
+#endif // H264_SLOTHY_OPT
 
 function ff_h264_idct_dc_add_neon, export=1
 .L_ff_h264_idct_dc_add_neon:
@@ -264,6 +268,7 @@ endfunc
         .unreq          vb
 .endm
 
+#ifndef H264_SLOTHY_OPT
 function ff_h264_idct8_add_neon, export=1
 .L_ff_h264_idct8_add_neon:
         AARCH64_VALID_CALL_TARGET
@@ -328,6 +333,7 @@ function ff_h264_idct8_add_neon, export=1
         sub             x1,  x1,  #128
         ret
 endfunc
+#endif // H264_SLOTHY_OPT
 
 function ff_h264_idct8_dc_add_neon, export=1
 .L_ff_h264_idct8_dc_add_neon:

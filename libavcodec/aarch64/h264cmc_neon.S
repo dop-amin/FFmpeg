@@ -23,6 +23,8 @@
 
 #include "libavutil/aarch64/asm.S"
 
+#define H264_SLOTHY_OPT 1
+
 /* chroma_mc8(uint8_t *dst, const uint8_t *src, ptrdiff_t stride, int h, int x, int y) */
 .macro  h264_chroma_mc8 type, codec=h264
 function ff_\type\()_\codec\()_chroma_mc8_neon, export=1
@@ -423,7 +425,9 @@ function ff_\type\()_h264_chroma_mc2_neon, export=1
 endfunc
 .endm
 
+#ifndef H264_SLOTHY_OPT
         h264_chroma_mc8 put
+#endif
         h264_chroma_mc8 avg
         h264_chroma_mc4 put
         h264_chroma_mc4 avg
