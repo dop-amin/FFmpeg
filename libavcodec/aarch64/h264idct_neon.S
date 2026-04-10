@@ -85,6 +85,12 @@ function ff_h264_idct_add_neon, export=1
         sub             x1,  x1,  #32
         ret
 endfunc
+#else
+// When the function body lives in a separate slothy file, provide local label
+// stubs so that movrel references in this translation unit still resolve.
+// The branch goes through PLT and is safe in shared-library builds.
+.L_ff_h264_idct_add_neon:
+        b       ff_h264_idct_add_neon
 #endif // H264_SLOTHY_OPT
 
 function ff_h264_idct_dc_add_neon, export=1
@@ -338,6 +344,9 @@ function ff_h264_idct8_add_neon, export=1
         sub             x1,  x1,  #128
         ret
 endfunc
+#else
+.L_ff_h264_idct8_add_neon:
+        b       ff_h264_idct8_add_neon
 #endif // H264_SLOTHY_OPT
 
 function ff_h264_idct8_dc_add_neon, export=1

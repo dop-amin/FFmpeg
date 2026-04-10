@@ -1,8 +1,8 @@
 MAIN_MAKEFILE=1
 include ffbuild/config.mak
 
-# Uncomment to use SLOTHY-optimized H.264 for Cortex-A72 instead of A55:
-# CPPFLAGS += -DH264_SLOTHY_A72_OPT
+# SLOTHY H.264 target: default A55. Change to H264_SLOTHY_A72_OPT for A72.
+CPPFLAGS += -DH264_SLOTHY_A55_OPT
 
 vpath %.c    $(SRC_PATH)
 vpath %.cpp  $(SRC_PATH)
