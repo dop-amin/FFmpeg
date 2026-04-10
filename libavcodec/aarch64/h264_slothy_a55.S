@@ -1,6 +1,8 @@
 /* SLOTHY-optimized H.264 NEON functions for Cortex-A55 */
 /* Auto-generated from SLOTHY optimization outputs */
 
+#ifdef H264_SLOTHY_A55_OPT
+
 #include "libavutil/aarch64/asm.S"
 #include "neon.S"
 
@@ -1294,4 +1296,6 @@ function ff_put_h264_chroma_mc8_neon, export=1
         b.gt            5b
         ret
 endfunc
+
+#endif // H264_SLOTHY_A55_OPT
 

@@ -22,6 +22,11 @@
 #include "libavutil/aarch64/asm.S"
 #include "neon.S"
 
+// Select SLOTHY implementation: define H264_SLOTHY_A72_OPT externally for A72.
+// Default is A55 when neither is explicitly defined.
+#if !defined(H264_SLOTHY_A55_OPT) && !defined(H264_SLOTHY_A72_OPT)
+#define H264_SLOTHY_A55_OPT 1
+#endif
 #define H264_SLOTHY_OPT 1
 
         /* H.264 qpel MC */

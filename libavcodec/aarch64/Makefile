@@ -46,7 +46,8 @@ NEON-OBJS-$(CONFIG_FMTCONVERT)          += aarch64/fmtconvert_neon.o
 NEON-OBJS-$(CONFIG_H264CHROMA)          += aarch64/h264cmc_neon.o
 NEON-OBJS-$(CONFIG_H264DSP)             += aarch64/h264dsp_neon.o              \
                                            aarch64/h264idct_neon.o              \
-                                           aarch64/h264_slothy_a55.o
+                                           aarch64/h264_slothy_a55.o            \
+                                           aarch64/h264_slothy_a72.o
 NEON-OBJS-$(CONFIG_H264PRED)            += aarch64/h264pred_neon.o
 NEON-OBJS-$(CONFIG_H264QPEL)            += aarch64/h264qpel_neon.o             \
                                            aarch64/hpeldsp_neon.o
