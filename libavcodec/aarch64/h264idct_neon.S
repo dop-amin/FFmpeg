@@ -22,13 +22,7 @@
 #include "libavutil/aarch64/asm.S"
 #include "neon.S"
 
-// SLOTHY implementation selection (set via CPPFLAGS in Makefile):
-//   -DH264_SLOTHY_A55_OPT  use Cortex-A55 schedule (default in Makefile)
-//   -DH264_SLOTHY_A72_OPT  use Cortex-A72 schedule
-//   (neither)              use original non-SLOTHY implementations
-#if defined(H264_SLOTHY_A55_OPT) || defined(H264_SLOTHY_A72_OPT)
-#define H264_SLOTHY_OPT 1
-#endif
+#include "h264_slothy_target.h"
 
 #ifndef H264_SLOTHY_OPT
 function ff_h264_idct_add_neon, export=1

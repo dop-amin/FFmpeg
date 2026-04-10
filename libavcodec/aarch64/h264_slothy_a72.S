@@ -1,5 +1,6 @@
 /* SLOTHY-optimized H.264 NEON functions for Cortex-A72 */
 
+#include "h264_slothy_target.h"
 #ifdef H264_SLOTHY_A72_OPT
 
 #include "libavutil/aarch64/asm.S"

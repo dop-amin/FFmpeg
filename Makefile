@@ -1,8 +1,7 @@
 MAIN_MAKEFILE=1
 include ffbuild/config.mak
 
-# SLOTHY H.264 target: default A55. Change to H264_SLOTHY_A72_OPT for A72.
-CPPFLAGS += -DH264_SLOTHY_A55_OPT
+# SLOTHY H.264 target: edit libavcodec/aarch64/h264_slothy_target.h to switch
 
 vpath %.c    $(SRC_PATH)
 vpath %.cpp  $(SRC_PATH)

@@ -23,7 +23,7 @@
 
 #include "libavutil/aarch64/asm.S"
 
-#define H264_SLOTHY_OPT 1
+#include "h264_slothy_target.h"
 
 /* chroma_mc8(uint8_t *dst, const uint8_t *src, ptrdiff_t stride, int h, int x, int y) */
 .macro  h264_chroma_mc8 type, codec=h264

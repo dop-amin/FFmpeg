@@ -1,6 +1,7 @@
 /* SLOTHY-optimized H.264 NEON functions for Cortex-A55 */
 /* Auto-generated from SLOTHY optimization outputs */
 
+#include "h264_slothy_target.h"
 #ifdef H264_SLOTHY_A55_OPT
 
 #include "libavutil/aarch64/asm.S"
