@@ -22,6 +22,7 @@
 
 #include "libavutil/aarch64/asm.S"
 #include "neon.S"
+#include "h264_slothy_target.h"
 
 .macro  h264_loop_filter_start
         cmp             w2,  #0
@@ -131,6 +132,7 @@ function ff_h264_v_loop_filter_luma_neon, export=1
         ret
 endfunc
 
+#ifndef H264_SLOTHY_OPT
 function ff_h264_h_loop_filter_luma_neon, export=1
         h264_loop_filter_start
 
@@ -179,6 +181,7 @@ function ff_h264_h_loop_filter_luma_neon, export=1
 9:
         ret
 endfunc
+#endif // H264_SLOTHY_OPT
 
 
 .macro h264_loop_filter_start_intra
